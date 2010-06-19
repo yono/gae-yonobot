@@ -1,0 +1,11 @@
+cron:
+- description: tweet
+  url: /tweet
+  schedule: every 15 minutes
+- description: reply
+  url: /reply
+  schedule: every 1 minutes
+- description: learn
+  url: /learn
+  schedule: every 24 hours
+  timezone: Asia/Tokyo
