@@ -44,6 +44,20 @@ api = twoauth.api(consumer_key,
 
 apiurl = 'http://markovchain-y.appspot.com/api/db'
 
+def parse_tweet(text):
+    reply = re.compile(u'@[\S]+')
+    url = re.compile(r's?https?://[-_.!~*\'()a-zA-Z0-9;/?:@&=+$,%#]+', re.I)
+
+    text = reply.sub('', text)
+    text = url.sub('', text)
+    text = text.replace(u'．', u'。')
+    text = text.replace(u'，', u'、')
+    text = text.replace(u'「', '')
+    text = text.replace(u'」', '')
+    text = text.replace(u'？', u'?')
+    text = text.replace(u'！', u'!')
+    return text
+
 
 class Kana(db.Model):
     kana = db.StringProperty(required=True)
